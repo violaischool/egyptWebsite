@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Coin Flip Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+      margin-top: 50px;
+    }
+    button {
+      padding: 15px 25px;
+      font-size: 18px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    #coin {
+      margin-top: 30px;
+      width: 150px;
+      height: 150px;
+      background-color: gold;
+      border-radius: 50%;
+      display: inline-block;
+      line-height: 150px;
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      color: white;
+      transition: transform 1s ease-in-out;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+    #winCount {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Coin Flip Game</h1>
+  <button onclick="flipCoin()">Flip Coin</button>
+
+  <div id="coin">Heads</div>
+
+  <div id="result"></div>
+  <div id="winCount">Wins: 0</div>
+
+  <script>
+    let winCounter = 0;
+    function flipCoin() {
+      const coin = document.getElementById("coin");
+      coin.style.transform = "rotateX(3600deg)"; 
+      setTimeout(() => {
+        const result = Math.random() < 0.5 ? "Heads" : "Tails";
+        coin.innerText = result;
+        coin.style.transform = "rotateX(0deg)";
+        document.getElementById("result").innerText = `Result: ${result}`;
+        if (result === "Heads") {
+          winCounter++;
+          document.getElementById("winCount").innerText = `Wins: ${winCounter}`;
+        }
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>
